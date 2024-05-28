@@ -7,10 +7,10 @@ public class Jugador : MonoBehaviour
 {
     // Start is called before the first frame update
     public float fuerzaSalto;
-    public int bandera=0;
     public GameManager gameManager;
     private Rigidbody2D rigidbody2D;
     private Animator animator;
+    public bool bandera = true;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,12 +20,12 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && bandera ==1)
+        if (Input.GetKeyDown(KeyCode.Space) && bandera)
         {
             animator.SetBool("estaSaltando", true);
-            // Salto una sola vez del personaje
-                rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
-                bandera = 0;
+            rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
+            // Después de saltar, el personaje no puede saltar nuevamente    
+            bandera = false;
             
         }   
     }
@@ -35,7 +35,7 @@ public class Jugador : MonoBehaviour
         if(collision.gameObject.tag == "Suelo")
         {
             animator.SetBool("estaSaltando", false);
-            bandera = 1;
+            bandera = true;
         }
         if (collision.gameObject.tag == "Obstaculo")
         {
