@@ -23,7 +23,7 @@ public class Jugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && bandera ==1)
         {
             animator.SetBool("estaSaltando", true);
-            
+            // Salto una sola vez del personaje
                 rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
                 bandera = 0;
             
