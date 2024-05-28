@@ -25,8 +25,7 @@ public class Jugador : MonoBehaviour
             animator.SetBool("estaSaltando", true);
             rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
             // Después de saltar, el personaje no puede saltar nuevamente    
-            bandera = false;
-            
+            bandera = false; 
         }   
     }
     //detectar si el jugador choca con algo
